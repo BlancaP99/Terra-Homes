@@ -1,0 +1,1252 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alquileres – Terra Homes</title>
+
+    <!-- DM SANS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brown: #5A210F;
+            --brown-hover: #71301A;
+            --cream: #F8F1E8;
+            --white: #FFFFFF;
+            --black: #111111;
+            --font: 'DM Sans', sans-serif;
+            --title-size: 18px;
+            --title-weight: 400;
+            --title-spacing: .015em;
+            --r-xs: 6px;
+            --r-md: 16px;
+            --r-lg: 22px;
+            --r-pill: 100px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--cream);
+            color: var(--black);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button,
+        input,
+        select {
+            font-family: var(--font);
+        }
+
+        .wrap {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* =========================
+           MOBILE NAV
+        ========================= */
+
+        .mob-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            background: var(--cream);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 34px;
+        }
+
+            .mob-nav.open {
+                display: flex;
+            }
+
+            .mob-nav a {
+                font-size: 20px;
+                font-weight: 400;
+                letter-spacing: .02em;
+                text-transform: uppercase;
+                color: var(--black);
+            }
+
+        .mob-close {
+            position: absolute;
+            top: 22px;
+            right: 28px;
+            background: none;
+            border: none;
+            font-size: 36px;
+            line-height: 1;
+            color: var(--black);
+            cursor: pointer;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .hd {
+            width: 100%;
+            z-index: 300;
+            padding: 14px 32px 0;
+            pointer-events: none;
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(8px);
+            border-radius: var(--r-pill);
+            padding: 4px 22px 4px 26px;
+            box-shadow: 0 4px 18px rgba(60, 26, 10, .14);
+            pointer-events: auto;
+            overflow: visible;
+        }
+
+        .nav-logo {
+            height: 52px;
+            width: auto;
+            transform: scale(1.35);
+            transform-origin: left center;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+            .nav-links a {
+                font-size: 12px;
+                font-weight: 400;
+                letter-spacing: .01em;
+                text-transform: uppercase;
+                color: var(--black);
+                transition: opacity .2s ease;
+            }
+
+                .nav-links a:hover {
+                    opacity: .55;
+                }
+
+        .nav-ham {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+            .nav-ham span {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: var(--black);
+                border-radius: 2px;
+            }
+
+        /* =========================
+           PAGE TITLE
+        ========================= */
+
+        .page-head {
+            padding: 36px 0 24px;
+            text-align: center;
+        }
+
+        .page-title,
+        .sec-title {
+            font-size: var(--title-size);
+            font-weight: var(--title-weight);
+            letter-spacing: var(--title-spacing);
+            text-transform: uppercase;
+            line-height: 1.2;
+            color: var(--black);
+        }
+
+        /* =========================
+           FILTERS
+        ========================= */
+
+        .filters {
+            padding: 0 0 42px;
+        }
+
+            .filters .wrap {
+                max-width: 1180px;
+            }
+
+        .filters-grid-top {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            align-items: start;
+            margin-bottom: 18px;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1.15fr 1.15fr 1.15fr 1.15fr;
+            gap: 14px;
+            align-items: start;
+        }
+
+        .filter-group {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-label {
+            width: 100%;
+            min-height: 24px;
+            background: var(--brown);
+            color: var(--white);
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10.5px;
+            font-weight: 400;
+            letter-spacing: .01em;
+            text-transform: uppercase;
+        }
+
+        .filter-input,
+        .filter-select,
+        .date-trigger {
+            width: 100%;
+            height: 32px;
+            border: 1px solid var(--white);
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--black);
+            padding: 0 13px;
+            font-size: 11.5px;
+            font-weight: 400;
+            outline: none;
+            box-shadow: 0 0 0 1px rgba(90, 33, 15, .20);
+        }
+
+            .filter-input::placeholder,
+            .date-trigger::placeholder {
+                color: rgba(17, 17, 17, .42);
+            }
+
+            .filter-input:focus,
+            .filter-select:focus,
+            .date-trigger:focus {
+                background: var(--white);
+                border-color: var(--white);
+                box-shadow: 0 0 0 1.3px rgba(90, 33, 15, .42);
+            }
+
+        .filter-select {
+            appearance: auto;
+            cursor: pointer;
+        }
+
+        .date-wrap {
+            position: relative;
+        }
+
+        .date-trigger {
+            cursor: pointer;
+            padding-right: 36px;
+        }
+
+        .date-icon {
+            position: absolute;
+            right: 13px;
+            bottom: 8px;
+            width: 15px;
+            height: 15px;
+            pointer-events: none;
+            color: rgba(17, 17, 17, .55);
+        }
+
+        .range-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+        }
+
+        .filters-actions {
+            display: grid;
+            grid-template-columns: 220px 1fr 220px;
+            gap: 20px;
+            align-items: center;
+            margin-top: 16px;
+        }
+
+        .btn-outline {
+            min-height: 32px;
+            background: var(--white);
+            color: var(--black);
+            border: 1px solid var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 10.5px;
+            font-weight: 400;
+            letter-spacing: .01em;
+            text-transform: uppercase;
+            transition: background .2s, color .2s, box-shadow .2s;
+            box-shadow: 0 0 0 1px rgba(90, 33, 15, .22);
+        }
+
+            .btn-outline:hover {
+                background: var(--brown);
+                color: var(--white);
+                border-color: var(--brown);
+                box-shadow: 0 0 0 1px var(--brown);
+            }
+
+        /* =========================
+           CUSTOM CALENDAR
+        ========================= */
+
+        .calendar-popover {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            width: 300px;
+            background: var(--white);
+            border: 1px solid rgba(90, 33, 15, .45);
+            border-radius: 14px;
+            padding: 16px 18px 18px;
+            box-shadow: 0 18px 38px rgba(60, 26, 10, .12);
+            z-index: 50;
+            display: none;
+        }
+
+            .calendar-popover.open {
+                display: block;
+            }
+
+        .calendar-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .cal-btn {
+            border: none;
+            background: transparent;
+            color: var(--brown);
+            cursor: pointer;
+            font-size: 24px;
+            width: 26px;
+            height: 26px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--black);
+        }
+
+        .calendar-week,
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+        }
+
+        .calendar-week {
+            margin-bottom: 10px;
+        }
+
+            .calendar-week span {
+                font-size: 11px;
+                color: rgba(90, 33, 15, .75);
+            }
+
+        .calendar-day {
+            height: 34px;
+            border: none;
+            background: transparent;
+            color: rgba(17, 17, 17, .78);
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+            .calendar-day:hover {
+                background: rgba(90, 33, 15, .08);
+            }
+
+            .calendar-day.muted {
+                color: rgba(17, 17, 17, .24);
+            }
+
+            .calendar-day.selected {
+                background: var(--brown);
+                color: var(--white);
+                font-weight: 500;
+                box-shadow: 0 0 0 3px rgba(90, 33, 15, .12);
+            }
+
+        /* =========================
+           PROPERTIES
+        ========================= */
+
+        .props {
+            padding: 0 0 42px;
+        }
+
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 34px 18px;
+            align-items: start;
+        }
+
+        .prop-card {
+            cursor: pointer;
+            position: relative;
+        }
+
+            .prop-card:hover .prop-img {
+                transform: scale(1.045);
+            }
+
+        .prop-loc {
+            font-size: 10.5px;
+            font-weight: 400;
+            letter-spacing: .01em;
+            text-transform: uppercase;
+            color: var(--black);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .prop-photo {
+            width: 100%;
+            aspect-ratio: 1 / .68;
+            border-radius: var(--r-md);
+            overflow: hidden;
+            background: #D4C4B4;
+        }
+
+        .prop-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transition: transform .4s ease;
+        }
+
+        .prop-specs {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 0 0;
+            flex-wrap: nowrap;
+        }
+
+        .spec {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11.5px;
+            font-weight: 400;
+            color: var(--black);
+            white-space: nowrap;
+        }
+
+        .spec-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            background: var(--brown);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+            .spec-icon img {
+                width: 15px;
+                height: 15px;
+                object-fit: contain;
+            }
+
+        .prop-price {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--black);
+            margin-left: auto;
+            white-space: nowrap;
+            letter-spacing: 0;
+        }
+
+        /* =========================
+           PAGINATION
+        ========================= */
+
+        .pagination {
+            padding: 6px 0 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            font-size: 12px;
+            color: var(--black);
+        }
+
+        .page-btn {
+            width: 34px;
+            height: 20px;
+            border-radius: 6px;
+            border: none;
+            background: var(--brown);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 13px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-numbers {
+            letter-spacing: .02em;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .ft {
+            background: var(--brown);
+            padding: 72px 0 48px;
+            border-radius: 18px 18px 0 0;
+        }
+
+        .ft-inner {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .ft-social {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ft-soc-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: transparent;
+            transition: transform .2s ease;
+        }
+
+            .ft-soc-btn:hover {
+                transform: translateY(-2px);
+            }
+
+            .ft-soc-btn svg {
+                width: 24px;
+                height: 24px;
+                fill: var(--white);
+            }
+
+        .ft-soc-id {
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: -.05em;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .ft-logo-wrap {
+            text-align: center;
+        }
+
+        .ft-logo {
+            height: 68px;
+            width: auto;
+            margin: 0 auto;
+            filter: brightness(0) invert(1);
+            opacity: .92;
+        }
+
+        .ft-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            align-items: flex-end;
+        }
+
+            .ft-nav a {
+                font-size: 12px;
+                font-weight: 400;
+                letter-spacing: .015em;
+                text-transform: uppercase;
+                color: var(--white);
+                transition: opacity .2s;
+            }
+
+                .ft-nav a:hover {
+                    opacity: .65;
+                }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+            .filters .wrap {
+                max-width: 100%;
+            }
+
+            .filters-grid-top {
+                grid-template-columns: 1fr;
+            }
+
+            .filters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filters-actions {
+                grid-template-columns: 1fr 1fr;
+            }
+
+                .filters-actions div {
+                    display: none;
+                }
+        }
+
+        @media (max-width: 960px) {
+            .wrap {
+                padding: 0 24px;
+            }
+
+            .hd {
+                padding: 14px 24px 0;
+            }
+
+            .nav {
+                min-height: 50px;
+            }
+
+            .nav-logo {
+                height: 46px;
+            }
+
+            .props-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px 22px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --title-size: 16px;
+            }
+
+            .wrap {
+                padding: 0 18px;
+            }
+
+            .hd {
+                padding: 0;
+                top: 0;
+            }
+
+            .nav {
+                width: 100%;
+                max-width: none;
+                min-height: 62px;
+                padding: 6px 18px;
+                border-radius: 0;
+                box-shadow: 0 4px 16px rgba(60, 26, 10, .10);
+            }
+
+            .nav-logo {
+                height: 50px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-ham {
+                display: flex;
+            }
+
+            .page-head {
+                padding: 34px 0 22px;
+            }
+
+            .filters {
+                padding-bottom: 34px;
+            }
+
+            .filters-grid-top,
+            .filters-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .range-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .filters-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-outline {
+                font-size: 12px;
+            }
+
+            .calendar-popover {
+                width: min(300px, calc(100vw - 36px));
+            }
+
+            .props-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .prop-photo {
+                aspect-ratio: 1 / .68;
+            }
+
+            .prop-specs {
+                flex-wrap: nowrap;
+                width: 100%;
+            }
+
+            .spec {
+                flex-shrink: 0;
+            }
+
+            .prop-price {
+                margin-left: auto;
+            }
+
+            .ft {
+                padding: 50px 0 42px;
+            }
+
+            .ft-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .ft-social {
+                justify-content: center;
+            }
+
+            .ft-logo {
+                height: 58px;
+            }
+
+            .ft-nav {
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MOBILE DRAWER -->
+    <nav class="mob-nav" id="mob-nav">
+        <button class="mob-close" id="mob-close">&times;</button>
+        <a href="ventas.html" onclick="closeMob()">Ventas</a>
+        <a href="alquileres.html" onclick="closeMob()">Alquileres</a>
+        <a href="sobre-nosotros.html" onclick="closeMob()">Sobre Nosotros</a>
+        <a href="contacto.html" onclick="closeMob()">Contacto</a>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="hd">
+        <div class="nav">
+            <a href="index.html" aria-label="Terra Homes inicio">
+                <img class="nav-logo" src="imgs/MARRON.png" alt="Terra Homes Real Estate">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="ventas.html">Ventas</a></li>
+                <li><a href="alquileres.html">Alquileres</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+            <button class="nav-ham" id="nav-ham" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- TITLE -->
+        <section class="page-head">
+            <div class="wrap">
+                <h1 class="page-title">Rentals</h1>
+            </div>
+        </section>
+
+        <!-- FILTERS -->
+        <section class="filters">
+            <div class="wrap">
+
+                <form class="filters-form" onsubmit="return false;">
+                    <div class="filters-grid-top">
+
+                        <div class="filter-group date-wrap">
+                            <label class="filter-label" for="checkin">Check-in</label>
+                            <input class="date-trigger" id="checkin" type="text" placeholder="dd/mm/yyyy" readonly data-calendar="checkin">
+                            <svg class="date-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm14 8H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10z" />
+                            </svg>
+                        </div>
+
+                        <div class="filter-group date-wrap">
+                            <label class="filter-label" for="checkout">Check-out</label>
+                            <input class="date-trigger" id="checkout" type="text" placeholder="dd/mm/yyyy" readonly data-calendar="checkout">
+                            <svg class="date-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm14 8H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10z" />
+                            </svg>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label" for="guests">Number of Guests</label>
+                            <select class="filter-select" id="guests">
+                                <option value=""></option>
+                                <option value="1">1 guest</option>
+                                <option value="2">2 guests</option>
+                                <option value="3">3 guests</option>
+                                <option value="4">4 guests</option>
+                                <option value="5">5+ guests</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="filters-grid">
+
+                        <div class="filter-group">
+                            <label class="filter-label" for="location">Location</label>
+                            <input class="filter-input" id="location" type="text">
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Floor Area</label>
+                            <div class="range-row">
+                                <input class="filter-input" type="number" placeholder="Min">
+                                <input class="filter-input" type="number" placeholder="Max">
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label" for="bedrooms">Bedrooms</label>
+                            <select class="filter-select" id="bedrooms">
+                                <option value=""></option>
+                                <option value="1">1 bedroom</option>
+                                <option value="2">2 bedrooms</option>
+                                <option value="3">3 bedrooms</option>
+                                <option value="4">4 bedrooms</option>
+                                <option value="5">5+ bedrooms</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Price</label>
+                            <div class="range-row">
+                                <input class="filter-input" type="number" placeholder="Min €">
+                                <input class="filter-input" type="number" placeholder="Max €">
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label" for="reference">Reference No.</label>
+                            <input class="filter-input" id="reference" type="text">
+                        </div>
+
+                    </div>
+
+                    <div class="filters-actions">
+                        <button class="btn-outline" type="button">Advanced Search</button>
+                        <div></div>
+                        <button class="btn-outline" type="reset">Clear Filters</button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+
+        <!-- PROPERTIES -->
+        <section class="props">
+            <div class="wrap">
+
+                <div class="props-grid">
+
+                    <a href="inmueble-alquiler.html" class="prop-card">
+                        <p class="prop-loc">Barrio de Salamanca - Madrid</p>
+                        <div class="prop-photo">
+                            <img class="prop-img" src="imgs/casa-1.jpg" alt="Inmueble Salamanca" loading="lazy">
+                        </div>
+                        <div class="prop-specs">
+                            <span class="spec"><span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>3</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>2</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>200m2</span>
+                            <span class="prop-price">3.200€/mes</span>
+                        </div>
+                    </a>
+
+                    <article class="prop-card">
+                        <p class="prop-loc">Jerónimos - Madrid</p>
+                        <div class="prop-photo">
+                            <img class="prop-img" src="imgs/casa-2.png" alt="Inmueble Jerónimos" loading="lazy">
+                        </div>
+                        <div class="prop-specs">
+                            <span class="spec"><span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>3</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>2</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>200m2</span>
+                            <span class="prop-price">2.950€/mes</span>
+                        </div>
+                    </article>
+
+                    <article class="prop-card">
+                        <p class="prop-loc">Justicia - Madrid</p>
+                        <div class="prop-photo">
+                            <img class="prop-img" src="imgs/casa-3.jpg" alt="Inmueble Justicia" loading="lazy">
+                        </div>
+                        <div class="prop-specs">
+                            <span class="spec"><span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>3</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>2</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>200m2</span>
+                            <span class="prop-price">4.100€/mes</span>
+                        </div>
+                    </article>
+
+                    <article class="prop-card">
+                        <p class="prop-loc">Barrio de Salamanca - Madrid</p>
+                        <div class="prop-photo">
+                            <img class="prop-img" src="imgs/casa-1.jpg" alt="Inmueble Salamanca" loading="lazy">
+                        </div>
+                        <div class="prop-specs">
+                            <span class="spec"><span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>3</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>2</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>200m2</span>
+                            <span class="prop-price">3.200€/mes</span>
+                        </div>
+                    </article>
+
+                    <article class="prop-card">
+                        <p class="prop-loc">Jerónimos - Madrid</p>
+                        <div class="prop-photo">
+                            <img class="prop-img" src="imgs/casa-2.png" alt="Inmueble Jerónimos" loading="lazy">
+                        </div>
+                        <div class="prop-specs">
+                            <span class="spec"><span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>3</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>2</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>200m2</span>
+                            <span class="prop-price">2.950€/mes</span>
+                        </div>
+                    </article>
+
+                    <article class="prop-card">
+                        <p class="prop-loc">Justicia - Madrid</p>
+                        <div class="prop-photo">
+                            <img class="prop-img" src="imgs/casa-3.jpg" alt="Inmueble Justicia" loading="lazy">
+                        </div>
+                        <div class="prop-specs">
+                            <span class="spec"><span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>3</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>2</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>200m2</span>
+                            <span class="prop-price">4.100€/mes</span>
+                        </div>
+                    </article>
+
+                    <article class="prop-card">
+                        <p class="prop-loc">Barrio de Salamanca - Madrid</p>
+                        <div class="prop-photo">
+                            <img class="prop-img" src="imgs/casa-1.jpg" alt="Inmueble Salamanca" loading="lazy">
+                        </div>
+                        <div class="prop-specs">
+                            <span class="spec"><span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>3</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>2</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>200m2</span>
+                            <span class="prop-price">3.200€/mes</span>
+                        </div>
+                    </article>
+
+                    <article class="prop-card">
+                        <p class="prop-loc">Jerónimos - Madrid</p>
+                        <div class="prop-photo">
+                            <img class="prop-img" src="imgs/casa-2.png" alt="Inmueble Jerónimos" loading="lazy">
+                        </div>
+                        <div class="prop-specs">
+                            <span class="spec"><span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>3</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>2</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>200m2</span>
+                            <span class="prop-price">2.950€/mes</span>
+                        </div>
+                    </article>
+
+                    <article class="prop-card">
+                        <p class="prop-loc">Justicia - Madrid</p>
+                        <div class="prop-photo">
+                            <img class="prop-img" src="imgs/casa-3.jpg" alt="Inmueble Justicia" loading="lazy">
+                        </div>
+                        <div class="prop-specs">
+                            <span class="spec"><span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>3</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>2</span>
+                            <span class="spec"><span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>200m2</span>
+                            <span class="prop-price">4.100€/mes</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+            <button class="page-btn" type="button">‹</button>
+            <span class="page-numbers">1 - 2 - ... - 10</span>
+            <button class="page-btn" type="button">›</button>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="ft">
+        <div class="wrap">
+            <div class="ft-inner">
+
+                <div class="ft-social">
+                    <a href="#" class="ft-soc-btn" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+
+                    <a href="#" class="ft-soc-btn" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+
+                    <a href="#" class="ft-soc-btn" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+
+                    <a href="#" class="ft-soc-btn" aria-label="Idealista">
+                        <span class="ft-soc-id">id</span>
+                    </a>
+                </div>
+
+                <div class="ft-logo-wrap">
+                    <img class="ft-logo" src="imgs/MARRON.png" alt="Terra Homes Real Estate">
+                </div>
+
+                <nav class="ft-nav" aria-label="Footer nav">
+                    <a href="ventas.html">Ventas</a>
+                    <a href="alquileres.html">Alquileres</a>
+                    <a href="sobre-nosotros.html">Sobre Nosotros</a>
+                    <a href="contacto.html">Contacto</a>
+                </nav>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobNav = document.getElementById('mob-nav');
+
+        function closeMob() {
+            mobNav.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('nav-ham').addEventListener('click', () => {
+            mobNav.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.getElementById('mob-close').addEventListener('click', closeMob);
+
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        let currentDate = new Date();
+        let activeInput = null;
+        let selectedDates = {
+            checkin: null,
+            checkout: null
+        };
+
+        function formatDate(date) {
+            const d = String(date.getDate()).padStart(2, '0');
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const y = date.getFullYear();
+            return `${d}/${m}/${y}`;
+        }
+
+        function createCalendar(input) {
+            closeCalendars();
+
+            activeInput = input;
+            const key = input.dataset.calendar;
+            const popover = document.createElement('div');
+            popover.className = 'calendar-popover open';
+
+            input.parentElement.appendChild(popover);
+
+            function renderCalendar() {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+
+                const firstDay = new Date(year, month, 1);
+                const startDay = (firstDay.getDay() + 6) % 7;
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+                let html = `
+                        <div class="calendar-head">
+                            <button class="cal-btn" type="button" data-action="prev">‹</button>
+                            <div class="calendar-title">${monthNames[month]} ${year}</div>
+                            <button class="cal-btn" type="button" data-action="next">›</button>
+                        </div>
+
+                        <div class="calendar-week">
+                            <span>Mo</span>
+                            <span>Tu</span>
+                            <span>We</span>
+                            <span>Th</span>
+                            <span>Fr</span>
+                            <span>Sa</span>
+                            <span>Su</span>
+                        </div>
+
+                        <div class="calendar-days">
+                    `;
+
+                for (let i = startDay - 1; i >= 0; i--) {
+                    html += `<button class="calendar-day muted" type="button">${daysInPrevMonth - i}</button>`;
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const date = new Date(year, month, day);
+                    const selected = selectedDates[key] && formatDate(date) === formatDate(selectedDates[key]);
+                    html += `<button class="calendar-day ${selected ? 'selected' : ''}" type="button" data-day="${day}">${day}</button>`;
+                }
+
+                const totalCells = startDay + daysInMonth;
+                const nextDays = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+
+                for (let day = 1; day <= nextDays; day++) {
+                    html += `<button class="calendar-day muted" type="button">${day}</button>`;
+                }
+
+                html += `</div>`;
+
+                popover.innerHTML = html;
+
+                popover.querySelector('[data-action="prev"]').addEventListener('click', () => {
+                    currentDate = new Date(year, month - 1, 1);
+                    renderCalendar();
+                });
+
+                popover.querySelector('[data-action="next"]').addEventListener('click', () => {
+                    currentDate = new Date(year, month + 1, 1);
+                    renderCalendar();
+                });
+
+                popover.querySelectorAll('[data-day]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const selectedDay = Number(btn.dataset.day);
+                        const selectedDate = new Date(year, month, selectedDay);
+                        selectedDates[key] = selectedDate;
+                        input.value = formatDate(selectedDate);
+                        closeCalendars();
+                    });
+                });
+            }
+
+            renderCalendar();
+        }
+
+        function closeCalendars() {
+            document.querySelectorAll('.calendar-popover').forEach(cal => cal.remove());
+        }
+
+        document.querySelectorAll('.date-trigger').forEach(input => {
+            input.addEventListener('click', (e) => {
+                e.stopPropagation();
+                createCalendar(input);
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.date-wrap')) {
+                closeCalendars();
+            }
+        });
+    </script>
+
+</body>
+</html>
