@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
@@ -951,12 +951,25 @@
             }
 
             .thumbs {
-                grid-template-columns: repeat(4, 1fr);
+                display: flex;
+                flex-wrap: nowrap;
                 gap: 8px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding-bottom: 4px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .thumbs::-webkit-scrollbar {
+                height: 0;
             }
 
             .thumb {
-                height: 42px;
+                flex: 0 0 82px;
+                width: 82px;
+                height: 50px;
+                scroll-snap-align: start;
             }
 
             .image-lightbox {
@@ -1402,7 +1415,7 @@
             galleryIndex = (index + galleryImages.length) % galleryImages.length;
             mainImg.src = galleryImages[galleryIndex];
 
-            thumbs.forEach((thumb, i) => {
+            thumbs.forEach((thumb) => {
                 const thumbImg = thumb.getAttribute('data-img');
                 thumb.classList.toggle('active', thumbImg === galleryImages[galleryIndex]);
             });
