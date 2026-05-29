@@ -1,0 +1,1019 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre Nosotros – Terra Homes</title>
+
+    <!-- DM SANS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brown: #5A210F;
+            --brown-hover: #71301A;
+            --cream: #F8F1E8;
+            --sand: #E8D8C8;
+            --white: #FFFFFF;
+            --black: #111111;
+            --font: 'DM Sans', sans-serif;
+            --title-size: 18px;
+            --title-weight: 400;
+            --title-spacing: .015em;
+            --text-size: 13px;
+            --small-size: 10.5px;
+            --r-xs: 6px;
+            --r-md: 16px;
+            --r-lg: 22px;
+            --r-xl: 20px;
+            --r-pill: 100px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--cream);
+            color: var(--black);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            font-family: var(--font);
+        }
+
+        .wrap {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .narrow-wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* =========================
+           MOBILE NAV
+        ========================= */
+
+        .mob-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            background: var(--cream);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 34px;
+        }
+
+            .mob-nav.open {
+                display: flex;
+            }
+
+            .mob-nav a {
+                font-size: 20px;
+                font-weight: 400;
+                letter-spacing: .02em;
+                text-transform: uppercase;
+                color: var(--black);
+            }
+
+        .mob-close {
+            position: absolute;
+            top: 22px;
+            right: 28px;
+            background: none;
+            border: none;
+            font-size: 36px;
+            line-height: 1;
+            color: var(--black);
+            cursor: pointer;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .hd {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            z-index: 300;
+            padding: 0 32px;
+            pointer-events: none;
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(8px);
+            border-radius: var(--r-pill);
+            padding: 4px 22px 4px 26px;
+            box-shadow: 0 4px 18px rgba(60, 26, 10, .14);
+            pointer-events: auto;
+            overflow: visible;
+        }
+
+        .nav-logo {
+            height: 52px;
+            width: auto;
+            transform: scale(1.35);
+            transform-origin: left center;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+            .nav-links a {
+                font-size: 12px;
+                font-weight: 400;
+                letter-spacing: .01em;
+                text-transform: uppercase;
+                color: var(--black);
+                transition: opacity .2s ease;
+            }
+
+                .nav-links a:hover {
+                    opacity: .55;
+                }
+
+        .nav-ham {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+            .nav-ham span {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: var(--black);
+                border-radius: 2px;
+            }
+
+        /* =========================
+           GLOBAL TITLES
+        ========================= */
+
+        .page-title,
+        .section-title,
+        .card-title {
+            font-size: var(--title-size);
+            font-weight: var(--title-weight);
+            letter-spacing: var(--title-spacing);
+            text-transform: uppercase;
+            line-height: 1.2;
+            color: var(--black);
+        }
+
+        .body-text {
+            font-size: var(--text-size);
+            font-weight: 400;
+            line-height: 1.42;
+            color: var(--black);
+        }
+
+        /* =========================
+           HERO ABOUT
+        ========================= */
+
+        .about-hero {
+            padding: 26px 32px 0;
+            max-width: 1600px;
+            margin: 0 auto 46px;
+        }
+
+        .about-hero-frame {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            border-radius: var(--r-xl);
+            overflow: hidden;
+            background: #D8C6B7;
+        }
+
+        .about-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .about-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .20);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .about-hero-logo {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+            .about-hero-logo img {
+                width: 340px;
+                height: auto;
+                opacity: .92;
+            }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            padding: 0 0 48px;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 34px;
+            align-items: stretch;
+        }
+
+        .intro-visual {
+            min-height: 210px;
+            border-radius: var(--r-lg);
+            background: linear-gradient(180deg, #E8D4C4 0%, #A76D4D 48%, #5A210F 100%);
+        }
+
+        .intro-card {
+            background: var(--white);
+            border-radius: var(--r-lg);
+            padding: 34px 54px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(60, 26, 10, .04);
+        }
+
+            .intro-card h1 {
+                margin-bottom: 14px;
+            }
+
+            .intro-card p {
+                margin-bottom: 12px;
+            }
+
+                .intro-card p:last-child {
+                    margin-bottom: 0;
+                }
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services-band {
+            background: var(--sand);
+            padding: 36px 0 34px;
+            margin-bottom: 42px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .service-card {
+            text-align: center;
+        }
+
+        .service-img {
+            width: 100%;
+            aspect-ratio: 1 / .42;
+            border-radius: var(--r-md);
+            overflow: hidden;
+            background: #D4C4B4;
+            margin-bottom: 10px;
+        }
+
+            .service-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center center;
+            }
+
+        .service-title {
+            font-size: var(--small-size);
+            font-weight: 400;
+            letter-spacing: .01em;
+            text-transform: uppercase;
+            line-height: 1.2;
+            color: var(--black);
+            max-width: 270px;
+            margin: 0 auto;
+        }
+
+        /* =========================
+           TEAM
+        ========================= */
+
+        .team {
+            padding: 0 0 56px;
+            text-align: center;
+        }
+
+            .team h2 {
+                margin-bottom: 18px;
+            }
+
+        .team-intro {
+            max-width: 960px;
+            margin: 0 auto 28px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.35;
+            color: var(--black);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .member-photo {
+            width: 100%;
+            aspect-ratio: 1 / .68;
+            border-radius: var(--r-md);
+            overflow: hidden;
+            background: #D4C4B4;
+            margin-bottom: 9px;
+        }
+
+            .member-photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center center;
+            }
+
+        .member-name {
+            font-size: 10.5px;
+            font-weight: 500;
+            letter-spacing: .01em;
+            text-transform: uppercase;
+            color: var(--black);
+            line-height: 1.1;
+        }
+
+        .member-role {
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--black);
+            line-height: 1.2;
+        }
+
+        /* =========================
+           VALUES
+        ========================= */
+
+        .values {
+            padding: 0 0 70px;
+            overflow: visible;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: .95fr 1.2fr;
+            gap: 58px;
+            align-items: center;
+        }
+
+        .values-copy h2 {
+            margin-bottom: 18px;
+            max-width: 420px;
+        }
+
+        .values-copy p {
+            max-width: 470px;
+            margin-bottom: 14px;
+        }
+
+            .values-copy p:last-child {
+                margin-bottom: 0;
+            }
+
+        .values-images {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: calc(100% + 12vw);
+            margin-right: -12vw;
+        }
+
+        .values-img {
+            width: 100%;
+            height: 94px;
+            border-radius: var(--r-md) 0 0 var(--r-md);
+            overflow: hidden;
+            background: #D4C4B4;
+        }
+
+            .values-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center center;
+            }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .ft {
+            background: var(--brown);
+            padding: 72px 0 48px;
+            border-radius: 18px 18px 0 0;
+        }
+
+        .ft-inner {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .ft-social {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ft-soc-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: transparent;
+            transition: transform .2s ease;
+        }
+
+            .ft-soc-btn:hover {
+                transform: translateY(-2px);
+            }
+
+            .ft-soc-btn svg {
+                width: 24px;
+                height: 24px;
+                fill: var(--white);
+            }
+
+        .ft-soc-id {
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: -.05em;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .ft-logo-wrap {
+            text-align: center;
+        }
+
+        .ft-logo {
+            height: 68px;
+            width: auto;
+            margin: 0 auto;
+            filter: brightness(0) invert(1);
+            opacity: .92;
+        }
+
+        .ft-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            align-items: flex-end;
+        }
+
+            .ft-nav a {
+                font-size: 12px;
+                font-weight: 400;
+                letter-spacing: .015em;
+                text-transform: uppercase;
+                color: var(--white);
+                transition: opacity .2s;
+            }
+
+                .ft-nav a:hover {
+                    opacity: .65;
+                }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 960px) {
+            .wrap,
+            .narrow-wrap {
+                padding: 0 24px;
+            }
+
+            .hd {
+                padding: 0 24px;
+                top: 8px;
+            }
+
+            .nav {
+                min-height: 50px;
+            }
+
+            .nav-logo {
+                height: 46px;
+            }
+
+            .about-hero {
+                padding: 22px 24px 0;
+                margin-bottom: 40px;
+            }
+
+            .about-hero-frame {
+                height: 280px;
+            }
+
+            .about-hero-logo img {
+                width: 280px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 240px 1fr;
+                gap: 24px;
+            }
+
+            .intro-card {
+                padding: 30px 34px;
+            }
+
+            .services-grid {
+                gap: 14px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 620px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .values-copy {
+                text-align: center;
+            }
+
+                .values-copy h2,
+                .values-copy p {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+            .values-images {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .values-img {
+                border-radius: var(--r-md);
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --title-size: 16px;
+            }
+
+            .wrap,
+            .narrow-wrap {
+                padding: 0 18px;
+            }
+
+            .hd {
+                padding: 0;
+                top: 0;
+            }
+
+            .nav {
+                width: 100%;
+                max-width: none;
+                min-height: 62px;
+                padding: 6px 18px;
+                border-radius: 0;
+                box-shadow: 0 4px 16px rgba(60, 26, 10, .10);
+            }
+
+            .nav-logo {
+                height: 50px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-ham {
+                display: flex;
+            }
+
+            .about-hero {
+                padding: 72px 14px 0;
+                margin-bottom: 34px;
+            }
+
+            .about-hero-frame {
+                height: 260px;
+                border-radius: 18px;
+            }
+
+            .about-hero-logo img {
+                width: 220px;
+            }
+
+            .intro {
+                padding-bottom: 38px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-visual {
+                min-height: 150px;
+            }
+
+            .intro-card {
+                padding: 28px 24px;
+            }
+
+            .services-band {
+                padding: 30px 0;
+                margin-bottom: 38px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .service-img {
+                aspect-ratio: 1 / .56;
+            }
+
+            .team {
+                padding-bottom: 46px;
+            }
+
+            .team-intro {
+                font-size: 13px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px 16px;
+            }
+
+            .member-photo {
+                aspect-ratio: 1 / .76;
+            }
+
+            .values {
+                padding-bottom: 52px;
+            }
+
+            .values-copy {
+                text-align: left;
+            }
+
+            .values-img {
+                height: 82px;
+            }
+
+            .ft {
+                padding: 50px 0 42px;
+            }
+
+            .ft-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .ft-social {
+                justify-content: center;
+            }
+
+            .ft-logo {
+                height: 58px;
+            }
+
+            .ft-nav {
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MOBILE DRAWER -->
+    <nav class="mob-nav" id="mob-nav">
+        <button class="mob-close" id="mob-close">&times;</button>
+        <a href="ventas.html" onclick="closeMob()">Ventas</a>
+        <a href="alquileres.html" onclick="closeMob()">Alquileres</a>
+        <a href="sobre-nosotros.html" onclick="closeMob()">Sobre Nosotros</a>
+        <a href="contacto.html" onclick="closeMob()">Contacto</a>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="hd">
+        <div class="nav">
+            <a href="index.html" aria-label="Terra Homes inicio">
+                <img class="nav-logo" src="imgs/MARRON.png" alt="Terra Homes Real Estate">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="ventas.html">Ventas</a></li>
+                <li><a href="alquileres.html">Alquileres</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+            <button class="nav-ham" id="nav-ham" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="about-hero">
+            <div class="about-hero-frame">
+                <img class="about-hero-img" src="imgs/img_about.jpg" alt="Terra Homes Madrid">
+                <div class="about-hero-overlay"></div>
+
+                <div class="about-hero-logo">
+                    <img src="imgs/BLANCO_COMPLETO.png" alt="Terra Homes Real Estate">
+                </div>
+            </div>
+        </section>
+
+        <!-- INTRO -->
+        <section class="intro">
+            <div class="narrow-wrap">
+                <div class="intro-grid">
+
+                    <div class="intro-visual"></div>
+
+                    <article class="intro-card">
+                        <h1 class="page-title">Sobre Nosotros</h1>
+
+                        <p class="body-text">
+                            En Terra Homes ofrecemos una cuidada selección de apartamentos de alquiler en los barrios madrileños más de moda, con zonas y estilos para satisfacer los gustos de cada cliente. Además, proporcionamos servicios adicionales a elección de nuestros inquilinos.
+                        </p>
+
+                        <p class="body-text">
+                            ¿No encuentras lo que buscas? ¡No hay problema! Ponte en contacto con nosotros para contarnos qué preferencias tienes y lo buscaremos para ti sin coste adicional.
+                        </p>
+
+                        <p class="body-text">
+                            Además, nos preocupamos de que el proceso sea cómodo y sencillo para ti, asegurando un trato profesional, atento y siempre transparente, para que encuentres tu hogar ideal.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services-band">
+            <div class="wrap">
+                <div class="services-grid">
+
+                    <article class="service-card">
+                        <div class="service-img">
+                            <img src="imgs/casa-1.jpg" alt="Cartera exclusiva de propiedades">
+                        </div>
+                        <h2 class="service-title">Exclusiva cartera de propiedades en los más deseados barrios de Madrid</h2>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-img">
+                            <img src="imgs/casa-2.png" alt="Servicio personalizado integral de gestión">
+                        </div>
+                        <h2 class="service-title">Servicio personalizado integral de gestión</h2>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-img">
+                            <img src="imgs/casa-3.jpg" alt="Servicios adicionales">
+                        </div>
+                        <h2 class="service-title">Servicios adicionales para hacer tu vida un poco más fácil</h2>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM -->
+        <section class="team">
+            <div class="narrow-wrap">
+                <h2 class="section-title">Nuestro equipo de rentals</h2>
+
+                <p class="team-intro">
+                    Siempre buscamos rodearnos del mejor equipo: personas con talento y pasión por lo que hacen. Más que un equipo, somos una pequeña familia que trabaja unida para ofrecer lo mejor. En nuestro equipo de alquiler puedes encontrar a:
+                </p>
+
+                <div class="team-grid">
+
+                    <article class="team-member">
+                        <div class="member-photo">
+                            <img src="imgs/casa-1.jpg" alt="Marta Malvido">
+                        </div>
+                        <h3 class="member-name">Marta Malvido</h3>
+                        <p class="member-role">Head of rentals</p>
+                    </article>
+
+                    <article class="team-member">
+                        <div class="member-photo">
+                            <img src="imgs/casa-1.jpg" alt="Marta Malvido">
+                        </div>
+                        <h3 class="member-name">Marta Malvido</h3>
+                        <p class="member-role">Head of rentals</p>
+                    </article>
+
+                    <article class="team-member">
+                        <div class="member-photo">
+                            <img src="imgs/casa-1.jpg" alt="Marta Malvido">
+                        </div>
+                        <h3 class="member-name">Marta Malvido</h3>
+                        <p class="member-role">Head of rentals</p>
+                    </article>
+
+                    <article class="team-member">
+                        <div class="member-photo">
+                            <img src="imgs/casa-1.jpg" alt="Marta Malvido">
+                        </div>
+                        <h3 class="member-name">Marta Malvido</h3>
+                        <p class="member-role">Head of rentals</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUES -->
+        <section class="values">
+            <div class="narrow-wrap">
+                <div class="values-grid">
+
+                    <article class="values-copy">
+                        <h2 class="section-title">
+                            Nuestra prioridad es proporcionar un excelente servicio al cliente, siempre con la máxima profesionalidad y transparencia.
+                        </h2>
+
+                        <p class="body-text">
+                            Nos esforzamos por ofrecer el mejor servicio y, si no podemos ayudarte con tu solicitud, te recomendaremos otro profesional de confianza que comparta los mismos valores que nos definen.
+                        </p>
+
+                        <p class="body-text">
+                            Nuestro equipo es joven, dinámico e internacional, hablamos 7 idiomas diferentes y nuestro trabajo está siempre definido por una marcada orientación al cliente.
+                        </p>
+                    </article>
+
+                    <div class="values-images">
+                        <div class="values-img">
+                            <img src="imgs/textura-1.jpg" alt="Textura Terra Homes">
+                        </div>
+
+                        <div class="values-img">
+                            <img src="imgs/textura-2.jpg" alt="Textura Terra Homes">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="ft">
+        <div class="wrap">
+            <div class="ft-inner">
+
+                <div class="ft-social">
+                    <a href="#" class="ft-soc-btn" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+
+                    <a href="#" class="ft-soc-btn" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+
+                    <a href="#" class="ft-soc-btn" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+
+                    <a href="#" class="ft-soc-btn" aria-label="Idealista">
+                        <span class="ft-soc-id">id</span>
+                    </a>
+                </div>
+
+                <div class="ft-logo-wrap">
+                    <img class="ft-logo" src="imgs/MARRON.png" alt="Terra Homes Real Estate">
+                </div>
+
+                <nav class="ft-nav" aria-label="Footer nav">
+                    <a href="ventas.html">Ventas</a>
+                    <a href="alquileres.html">Alquileres</a>
+                    <a href="sobre-nosotros.html">Sobre Nosotros</a>
+                    <a href="contacto.html">Contacto</a>
+                </nav>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobNav = document.getElementById('mob-nav');
+
+        function closeMob() {
+            mobNav.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('nav-ham').addEventListener('click', () => {
+            mobNav.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.getElementById('mob-close').addEventListener('click', closeMob);
+    </script>
+
+</body>
+</html>

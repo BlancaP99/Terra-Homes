@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terra Homes – Real Estate Madrid</title>
+
+    <!-- DM SANS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brown: #5A210F;
+            --brown-hover: #71301A;
+            --cream: #F8F1E8;
+            --white: #FFFFFF;
+            --black: #111111;
+            --terra-grey: #877B72;
+            --border: #E9DCD1;
+            --font: 'DM Sans', sans-serif;
+            --title-size: 18px;
+            --title-weight: 400;
+            --title-spacing: .015em;
+            --r-xs: 6px;
+            --r-sm: 10px;
+            --r-md: 16px;
+            --r-lg: 22px;
+            --r-xl: 20px;
+            --r-pill: 100px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--cream);
+            color: var(--black);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button,
+        input {
+            font-family: var(--font);
+        }
+
+        .wrap {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* =========================
+           MOBILE NAV
+        ========================= */
+
+        .mob-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            background: var(--cream);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 34px;
+        }
+
+            .mob-nav.open {
+                display: flex;
+            }
+
+            .mob-nav a {
+                font-size: 20px;
+                font-weight: 400;
+                letter-spacing: .02em;
+                text-transform: uppercase;
+                color: var(--black);
+            }
+
+        .mob-close {
+            position: absolute;
+            top: 22px;
+            right: 28px;
+            background: none;
+            border: none;
+            font-size: 36px;
+            line-height: 1;
+            color: var(--black);
+            cursor: pointer;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .hd {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            z-index: 300;
+            padding: 0 32px;
+            pointer-events: none;
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(8px);
+            border-radius: var(--r-pill);
+            padding: 4px 22px 4px 26px;
+            box-shadow: 0 4px 18px rgba(60, 26, 10, .14);
+            pointer-events: auto;
+        }
+
+        .nav-logo {
+            height: 52px;
+            width: auto;
+            transform: scale(1.35);
+            transform-origin: left center;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+            .nav-links a {
+                font-size: 12px;
+                font-weight: 400;
+                letter-spacing: .01em;
+                text-transform: uppercase;
+                color: var(--black);
+                transition: opacity .2s ease;
+            }
+
+                .nav-links a:hover {
+                    opacity: .55;
+                }
+
+        .nav-ham {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+            .nav-ham span {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: var(--black);
+                border-radius: 2px;
+            }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 26px 32px 0;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .hero-frame {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 58px);
+            min-height: 500px;
+            max-height: 760px;
+            border-radius: var(--r-xl);
+            overflow: hidden;
+            background: #D8C6B7;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transition: opacity .45s ease;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient( to top, rgba(0, 0, 0, .45) 0%, rgba(0, 0, 0, .20) 26%, rgba(0, 0, 0, .05) 55%, rgba(0, 0, 0, 0) 80% );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-info {
+            position: absolute;
+            left: 36px;
+            bottom: 78px;
+            z-index: 2;
+            color: var(--white);
+            max-width: 560px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--brown);
+            color: var(--white);
+            border-radius: 10px;
+            padding: 6px 15px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .03em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .hero-title {
+            font-size: var(--title-size);
+            line-height: 1.2;
+            font-weight: var(--title-weight);
+            letter-spacing: var(--title-spacing);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            color: var(--white);
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .hero-meta-price {
+            font-weight: 500;
+        }
+
+        .hero-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .hero-meta-icon-box {
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            background: var(--white);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+            .hero-meta-icon-box img {
+                width: 13px;
+                height: 13px;
+                object-fit: contain;
+                filter: brightness(0) saturate(100%) invert(15%) sepia(42%) saturate(1596%) hue-rotate(351deg) brightness(89%) contrast(97%);
+            }
+
+        .hero-arrows {
+            position: absolute;
+            bottom: 30px;
+            left: 36px;
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .hero-arr {
+            width: 34px;
+            height: 34px;
+            background: rgba(255,255,255,.96);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 22px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brown);
+            transition: background .2s, transform .15s;
+        }
+
+            .hero-arr:hover {
+                background: var(--white);
+                transform: translateY(-1px);
+            }
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search {
+            padding: 42px 0 46px;
+        }
+
+        .search-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .section-title,
+        .search h2,
+        .about-card h2,
+        .sec-title,
+        .banner-body h3,
+        .nl h2 {
+            font-size: var(--title-size);
+            font-weight: var(--title-weight);
+            letter-spacing: var(--title-spacing);
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .search h2 {
+            color: var(--black);
+            margin-bottom: 14px;
+        }
+
+        .search-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .btn-solid {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            padding: 10px 24px;
+            background: var(--brown);
+            color: var(--white);
+            border: none;
+            border-radius: var(--r-xs);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: .02em;
+            text-transform: uppercase;
+            transition: background .2s, transform .15s;
+            white-space: nowrap;
+        }
+
+            .btn-solid:hover {
+                background: var(--brown-hover);
+                transform: translateY(-1px);
+            }
+
+        .btn-white {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            min-width: 190px;
+            min-height: 28px;
+            padding: 8px 22px;
+            background: var(--white);
+            color: var(--black);
+            border: none;
+            border-radius: var(--r-xs);
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: .02em;
+            text-transform: uppercase;
+            transition: background .2s, transform .15s;
+            white-space: nowrap;
+        }
+
+            .btn-white:hover {
+                background: var(--cream);
+                transform: translateY(-1px);
+            }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            padding: 0 0 54px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 330px 1fr;
+            gap: 30px;
+            align-items: stretch;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-visual {
+            min-height: 136px;
+            border-radius: var(--r-lg);
+            background: linear-gradient(180deg, #E8D4C4 0%, #A76D4D 48%, #5A210F 100%);
+        }
+
+        .about-card {
+            background: var(--white);
+            border-radius: var(--r-lg);
+            padding: 34px 54px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(60, 26, 10, .04);
+        }
+
+            .about-card h2 {
+                color: var(--black);
+                margin-bottom: 12px;
+            }
+
+            .about-card p {
+                font-size: 13px;
+                font-weight: 400;
+                line-height: 1.42;
+                color: var(--black);
+                max-width: 610px;
+            }
+
+        /* =========================
+           PROPERTIES
+        ========================= */
+
+        .props {
+            padding: 0 0 58px;
+        }
+
+        .sec-title {
+            color: var(--black);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .prop-card {
+            cursor: pointer;
+            position: relative;
+        }
+
+            .prop-card:hover .prop-img {
+                transform: scale(1.045);
+            }
+
+        .prop-loc {
+            font-size: 10.5px;
+            font-weight: 400;
+            letter-spacing: .01em;
+            text-transform: uppercase;
+            color: var(--black);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .prop-photo {
+            width: 100%;
+            aspect-ratio: 1 / .68;
+            border-radius: var(--r-md);
+            overflow: hidden;
+            background: #D4C4B4;
+        }
+
+        .prop-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transition: transform .4s ease;
+        }
+
+        .prop-specs {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 0 0;
+            flex-wrap: nowrap;
+        }
+
+        .spec {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11.5px;
+            font-weight: 400;
+            color: var(--black);
+            white-space: nowrap;
+        }
+
+        .spec-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            background: var(--brown);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+            .spec-icon img {
+                width: 15px;
+                height: 15px;
+                object-fit: contain;
+            }
+
+        .prop-price {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--black);
+            margin-left: auto;
+            white-space: nowrap;
+            letter-spacing: 0;
+        }
+
+        .props-cta {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+            .props-cta .btn-solid {
+                min-width: 190px;
+                min-height: 28px;
+                font-size: 10px;
+                padding: 8px 22px;
+            }
+
+        /* =========================
+           TERRA URBAN
+        ========================= */
+
+        .banner {
+            padding: 0 0 54px;
+        }
+
+        .banner-card {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--terra-grey);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 300px minmax(390px, 1fr) 260px;
+            min-height: 170px;
+            position: relative;
+        }
+
+        .banner-logo-col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 26px 34px;
+            position: relative;
+            z-index: 2;
+        }
+
+            .banner-logo-col img {
+                width: 245px;
+                height: auto;
+            }
+
+        .banner-body {
+            padding: 34px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+            .banner-body h3 {
+                color: var(--white);
+                white-space: nowrap;
+            }
+
+            .banner-body p {
+                font-size: 12.5px;
+                font-weight: 400;
+                color: var(--white);
+                line-height: 1.35;
+                max-width: 410px;
+            }
+
+        .banner-photo {
+            overflow: hidden;
+            position: relative;
+        }
+
+            .banner-photo::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to right, var(--terra-grey) 0%, rgba(135, 123, 114, .65) 35%, rgba(135, 123, 114, 0) 100%);
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .banner-photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: .55;
+            }
+
+        /* =========================
+           NEWSLETTER
+        ========================= */
+
+        .nl {
+            padding: 12px 0 70px;
+            text-align: center;
+        }
+
+            .nl h2 {
+                color: var(--black);
+                margin-bottom: 6px;
+            }
+
+            .nl p {
+                font-size: 12.5px;
+                font-weight: 400;
+                line-height: 1.35;
+                color: var(--black);
+                margin-bottom: 18px;
+            }
+
+        .nl-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .nl-input {
+            padding: 10px 16px;
+            width: 100%;
+            height: 28px;
+            border: 1px solid var(--border);
+            border-radius: var(--r-xs);
+            font-size: 13px;
+            color: var(--black);
+            background: var(--white);
+            outline: none;
+            transition: border-color .2s;
+        }
+
+            .nl-input:focus {
+                border-color: var(--brown);
+            }
+
+        .nl-form .btn-solid {
+            width: auto;
+            min-width: 190px;
+            min-height: 28px;
+            font-size: 10px;
+            padding: 8px 22px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .ft {
+            background: var(--brown);
+            padding: 72px 0 48px;
+            border-radius: 18px 18px 0 0;
+        }
+
+        .ft-inner {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .ft-social {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ft-soc-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: transparent;
+            transition: transform .2s ease;
+        }
+
+            .ft-soc-btn:hover {
+                transform: translateY(-2px);
+            }
+
+            .ft-soc-btn svg {
+                width: 24px;
+                height: 24px;
+                fill: var(--white);
+            }
+
+        .ft-soc-id {
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: -.05em;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .ft-logo-wrap {
+            text-align: center;
+        }
+
+        .ft-logo {
+            height: 68px;
+            width: auto;
+            margin: 0 auto;
+            filter: brightness(0) invert(1);
+            opacity: .92;
+        }
+
+        .ft-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            align-items: flex-end;
+        }
+
+            .ft-nav a {
+                font-size: 12px;
+                font-weight: 400;
+                letter-spacing: .015em;
+                text-transform: uppercase;
+                color: var(--white);
+                transition: opacity .2s;
+            }
+
+                .ft-nav a:hover {
+                    opacity: .65;
+                }
+
+        .ft-bottom {
+            display: none;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 960px) {
+            .wrap {
+                padding: 0 24px;
+            }
+
+            .hd {
+                padding: 0 24px;
+                top: 8px;
+            }
+
+            .nav {
+                min-height: 50px;
+            }
+
+            .nav-logo {
+                height: 46px;
+            }
+
+            .hero {
+                padding: 22px 24px 0;
+            }
+
+            .hero-frame {
+                height: calc(100vh - 54px);
+                min-height: 480px;
+                max-height: 640px;
+            }
+
+            .hero-info {
+                left: 30px;
+                bottom: 72px;
+            }
+
+            .hero-arrows {
+                left: 30px;
+                bottom: 24px;
+            }
+
+            .about-grid {
+                grid-template-columns: 250px 1fr;
+            }
+
+            .props-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .banner-card {
+                grid-template-columns: 260px 1fr;
+            }
+
+            .banner-photo {
+                display: none;
+            }
+
+            .banner-logo-col img {
+                width: 220px;
+            }
+
+            .banner-body h3 {
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --title-size: 16px;
+            }
+
+            .wrap {
+                padding: 0 18px;
+            }
+
+            .hd {
+                padding: 0;
+                top: 0;
+            }
+
+            .nav {
+                width: 100%;
+                max-width: none;
+                min-height: 62px;
+                padding: 6px 18px;
+                border-radius: 0;
+                box-shadow: 0 4px 16px rgba(60, 26, 10, .10);
+            }
+
+            .nav-logo {
+                height: 50px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-ham {
+                display: flex;
+            }
+
+            .hero {
+                padding: 72px 14px 0;
+            }
+
+            .hero-frame {
+                height: calc(100vh - 92px);
+                min-height: 610px;
+                max-height: none;
+                border-radius: 18px;
+            }
+
+            .hero-info {
+                left: 22px;
+                right: 22px;
+                bottom: 70px;
+                max-width: none;
+            }
+
+            .hero-badge {
+                font-size: 11px;
+                padding: 5px 11px;
+                margin-bottom: 10px;
+            }
+
+            .hero-title {
+                margin-bottom: 10px;
+            }
+
+            .hero-meta {
+                gap: 10px;
+                font-size: 12px;
+            }
+
+            .hero-meta-icon-box {
+                width: 20px;
+                height: 20px;
+            }
+
+                .hero-meta-icon-box img {
+                    width: 12px;
+                    height: 12px;
+                }
+
+            .hero-arrows {
+                bottom: 20px;
+                left: 22px;
+                gap: 8px;
+            }
+
+            .hero-arr {
+                width: 32px;
+                height: 32px;
+                font-size: 20px;
+                border-radius: 9px;
+            }
+
+            .search {
+                padding: 36px 0 42px;
+            }
+
+            .search-inner {
+                text-align: center;
+            }
+
+            .search-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .about-visual {
+                min-height: 130px;
+            }
+
+            .about-card {
+                padding: 28px 24px;
+            }
+
+            .props-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .prop-photo {
+                aspect-ratio: 1 / .68;
+            }
+
+            .prop-specs {
+                flex-wrap: nowrap;
+                width: 100%;
+            }
+
+            .spec {
+                flex-shrink: 0;
+            }
+
+            .prop-price {
+                margin-left: auto;
+            }
+
+            .banner-card {
+                grid-template-columns: 1fr;
+                min-height: 390px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .banner-logo-col {
+                justify-content: center;
+                padding: 0 28px 14px;
+                position: relative;
+                z-index: 2;
+            }
+
+                .banner-logo-col img {
+                    width: 220px;
+                }
+
+            .banner-body {
+                padding: 0 28px;
+                align-items: center;
+                text-align: center;
+                position: relative;
+                z-index: 2;
+            }
+
+                .banner-body h3 {
+                    white-space: normal;
+                }
+
+                .banner-body p {
+                    max-width: 280px;
+                }
+
+                .banner-body .btn-white {
+                    justify-content: center;
+                }
+
+            .banner-photo {
+                display: block;
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+            }
+
+                .banner-photo::before {
+                    background: linear-gradient( to bottom, var(--terra-grey) 0%, rgba(135, 123, 114, .96) 42%, rgba(135, 123, 114, .72) 68%, rgba(135, 123, 114, .12) 100% );
+                }
+
+                .banner-photo img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    opacity: .62;
+                }
+
+            .nl {
+                padding-bottom: 52px;
+            }
+
+            .ft {
+                padding: 50px 0 42px;
+            }
+
+            .ft-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .ft-social {
+                justify-content: center;
+            }
+
+            .ft-logo {
+                height: 58px;
+            }
+
+            .ft-nav {
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MOBILE DRAWER -->
+    <nav class="mob-nav" id="mob-nav">
+        <button class="mob-close" id="mob-close">&times;</button>
+        <a href="ventas.html" onclick="closeMob()">Ventas</a>
+        <a href="alquileres.html" onclick="closeMob()">Alquileres</a>
+        <a href="sobre-nosotros.html" onclick="closeMob()">Sobre Nosotros</a>
+        <a href="contacto.html" onclick="closeMob()">Contacto</a>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="hd">
+        <div class="nav">
+            <a href="index.html" aria-label="Terra Homes inicio">
+                <img class="nav-logo" src="imgs/MARRON.png" alt="Terra Homes Real Estate">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="ventas.html">Ventas</a></li>
+                <li><a href="alquileres.html">Alquileres</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+            <button class="nav-ham" id="nav-ham" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Galería principal">
+        <div class="hero-frame">
+            <img class="hero-img" id="hero-img" src="imgs/casa-1.jpg" alt="Inmueble exclusivo en Madrid">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-info">
+                <div class="hero-badge">Sale</div>
+
+                <h1 class="hero-title">Apartment Madrid – Madrid</h1>
+
+                <div class="hero-meta">
+                    <span class="hero-meta-price">3,200,000 €</span>
+
+                    <span class="hero-meta-item">
+                        <span class="hero-meta-icon-box">
+                            <img src="imgs/HABITACION_BLANCO.png" alt="">
+                        </span>
+                        3 beds
+                    </span>
+
+                    <span class="hero-meta-item">
+                        <span class="hero-meta-icon-box">
+                            <img src="imgs/BAÑO_BLANCO.png" alt="">
+                        </span>
+                        3 baths
+                    </span>
+
+                    <span class="hero-meta-item">
+                        <span class="hero-meta-icon-box">
+                            <img src="imgs/METROS_BLANCO.png" alt="">
+                        </span>
+                        200m2
+                    </span>
+                </div>
+            </div>
+
+            <div class="hero-arrows">
+                <button class="hero-arr" id="h-prev" aria-label="Anterior">&#8249;</button>
+                <button class="hero-arr" id="h-next" aria-label="Siguiente">&#8250;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEARCH -->
+    <section class="search">
+        <div class="wrap">
+            <div class="search-inner">
+                <h2>¿Qué estás buscando?</h2>
+
+                <div class="search-row">
+                    <a href="ventas.html" class="btn-solid">Comprar</a>
+                    <a href="alquileres.html" class="btn-solid">Alquilar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+        <div class="wrap">
+            <div class="about-grid">
+                <div class="about-visual"></div>
+
+                <div class="about-card">
+                    <h2>¿Quiénes somos?</h2>
+                    <p>
+                        Somos una inmobiliaria boutique especializada en la compra venta y alquiler de inmuebles en zonas más exclusivas de Madrid. Somos una inmobiliaria boutique especializada en la compra venta y alquiler de inmuebles en zonas más exclusivas de Madrid.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPERTIES -->
+    <section class="props">
+        <div class="wrap">
+            <h2 class="sec-title">Inmuebles Destacados</h2>
+
+            <div class="props-grid">
+
+                <article class="prop-card">
+                    <p class="prop-loc">Barrio de Salamanca - Madrid</p>
+
+                    <div class="prop-photo">
+                        <img class="prop-img" src="imgs/casa-1.jpg" alt="Inmueble Salamanca" loading="lazy">
+                    </div>
+
+                    <div class="prop-specs">
+                        <span class="spec">
+                            <span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>
+                            3
+                        </span>
+
+                        <span class="spec">
+                            <span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>
+                            2
+                        </span>
+
+                        <span class="spec">
+                            <span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>
+                            200m2
+                        </span>
+
+                        <span class="prop-price">1.950.000€</span>
+                    </div>
+                </article>
+
+                <article class="prop-card">
+                    <p class="prop-loc">Jerónimos - Madrid</p>
+
+                    <div class="prop-photo">
+                        <img class="prop-img" src="imgs/casa-2.png" alt="Inmueble Jerónimos" loading="lazy">
+                    </div>
+
+                    <div class="prop-specs">
+                        <span class="spec">
+                            <span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>
+                            3
+                        </span>
+
+                        <span class="spec">
+                            <span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>
+                            2
+                        </span>
+
+                        <span class="spec">
+                            <span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>
+                            200m2
+                        </span>
+
+                        <span class="prop-price">1.950.000€</span>
+                    </div>
+                </article>
+
+                <article class="prop-card">
+                    <p class="prop-loc">Justicia - Madrid</p>
+
+                    <div class="prop-photo">
+                        <img class="prop-img" src="imgs/casa-3.jpg" alt="Inmueble Justicia" loading="lazy">
+                    </div>
+
+                    <div class="prop-specs">
+                        <span class="spec">
+                            <span class="spec-icon"><img src="imgs/HABITACION_BLANCO.png" alt=""></span>
+                            3
+                        </span>
+
+                        <span class="spec">
+                            <span class="spec-icon"><img src="imgs/BAÑO_BLANCO.png" alt=""></span>
+                            2
+                        </span>
+
+                        <span class="spec">
+                            <span class="spec-icon"><img src="imgs/METROS_BLANCO.png" alt=""></span>
+                            200m2
+                        </span>
+
+                        <span class="prop-price">1.950.000€</span>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="props-cta">
+                <a href="ventas.html" class="btn-solid">Ver Todos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER -->
+    <section class="banner">
+        <div class="wrap">
+            <div class="banner-card">
+
+                <div class="banner-logo-col">
+                    <img src="imgs/terra-urban-blanco.png" alt="Terra Urban">
+                </div>
+
+                <div class="banner-body">
+                    <h3>¿Tienes un presupuesto ajustado?</h3>
+                    <p>Visita Terra Urban, la inmobiliaria especializada en inmuebles más asequibles.</p>
+                    <div>
+                        <a href="#" class="btn-white">Visítanos</a>
+                    </div>
+                </div>
+
+                <div class="banner-photo">
+                    <img src="imgs/casa-2.png" alt="Inmueble Terra Urban" loading="lazy">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="nl">
+        <div class="wrap">
+            <h2>Suscríbase aquí</h2>
+            <p>a nuestra lista de correos y será el primero en<br>recibir nuestras noticias</p>
+
+            <form class="nl-form" onsubmit="return false;" novalidate>
+                <input class="nl-input" type="email" required aria-label="Correo electrónico">
+                <button class="btn-solid" type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="ft">
+        <div class="wrap">
+            <div class="ft-inner">
+
+                <div class="ft-social">
+                    <a href="#" class="ft-soc-btn" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+
+                    <a href="#" class="ft-soc-btn" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+
+                    <a href="#" class="ft-soc-btn" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+
+                    <a href="#" class="ft-soc-btn" aria-label="Idealista">
+                        <span class="ft-soc-id">id</span>
+                    </a>
+                </div>
+
+                <div class="ft-logo-wrap">
+                    <img class="ft-logo" src="imgs/MARRON.png" alt="Terra Homes Real Estate">
+                </div>
+
+                <nav class="ft-nav" aria-label="Footer nav">
+                    <a href="ventas.html">Ventas</a>
+                    <a href="alquileres.html">Alquileres</a>
+                    <a href="sobre-nosotros.html">Sobre Nosotros</a>
+                    <a href="contacto.html">Contacto</a>
+                </nav>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const slides = ['imgs/casa-1.jpg', 'imgs/casa-2.png', 'imgs/casa-3.jpg'];
+        let idx = 0;
+        const imgEl = document.getElementById('hero-img');
+
+        function goTo(n) {
+            imgEl.style.opacity = '0';
+            setTimeout(() => {
+                imgEl.src = slides[n];
+                imgEl.style.opacity = '1';
+            }, 300);
+        }
+
+        document.getElementById('h-prev').addEventListener('click', () => {
+            idx = (idx - 1 + slides.length) % slides.length;
+            goTo(idx);
+        });
+
+        document.getElementById('h-next').addEventListener('click', () => {
+            idx = (idx + 1) % slides.length;
+            goTo(idx);
+        });
+
+        setInterval(() => {
+            idx = (idx + 1) % slides.length;
+            goTo(idx);
+        }, 6000);
+
+        const mobNav = document.getElementById('mob-nav');
+
+        function closeMob() {
+            mobNav.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('nav-ham').addEventListener('click', () => {
+            mobNav.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.getElementById('mob-close').addEventListener('click', closeMob);
+    </script>
+
+</body>
+</html>
