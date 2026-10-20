@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
@@ -802,6 +802,84 @@
                 align-items: center;
             }
         }
+
+        /* =========================
+           CONTACT BANNER
+        ========================= */
+
+        .sales-contact {
+            padding: 0 0 58px;
+        }
+
+        .sales-contact-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 38px 44px;
+            background: var(--brown);
+            color: var(--white);
+            border-radius: 22px;
+        }
+
+        .sales-contact-copy {
+            max-width: 700px;
+        }
+
+            .sales-contact-copy h2 {
+                font-family: var(--font);
+                font-size: var(--title-size);
+                font-weight: var(--title-weight);
+                letter-spacing: var(--title-spacing);
+                line-height: 1.4;
+                text-transform: uppercase;
+                margin: 0 0 10px;
+            }
+
+            .sales-contact-copy p {
+                font-size: 13px;
+                line-height: 1.6;
+                margin: 0;
+            }
+
+        .sales-contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            min-height: 38px;
+            padding: 11px 25px;
+            background: var(--white);
+            color: var(--brown);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: .02em;
+            text-transform: uppercase;
+            transition: background .2s;
+        }
+
+            .sales-contact-link:hover {
+                background: var(--cream);
+            }
+
+            .sales-contact-link:focus-visible {
+                outline: 2px solid var(--white);
+                outline-offset: 5px;
+            }
+
+        @media (max-width: 760px) {
+            .sales-contact {
+                padding-bottom: 42px;
+            }
+
+            .sales-contact-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 28px 24px;
+                gap: 22px;
+            }
+        }
     </style>
 </head>
 
@@ -1147,6 +1225,19 @@
             <span class="page-numbers">1 - 2 - ... - 10</span>
             <button class="page-btn" type="button">›</button>
         </div>
+
+        <!-- CONTACT: below the gallery and its pagination -->
+        <section class="sales-contact" aria-labelledby="sales-contact-title">
+            <div class="wrap">
+                <div class="sales-contact-card">
+                    <div class="sales-contact-copy">
+                        <h2 id="sales-contact-title">¿No encuentras lo que estás buscando?</h2>
+                        <p>Cuéntanos cómo es la casa que tienes en mente. Te ayudamos a encontrarla.</p>
+                    </div>
+                    <a class="sales-contact-link" href="contacto.html">Contacta con nosotros</a>
+                </div>
+            </div>
+        </section>
 
     </main>
 
