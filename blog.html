@@ -1619,6 +1619,31 @@
                     font-size: 9px
                 }
         }
+
+        /* Contact banners: colours shared with Ventas */
+        .contact-strip {
+            background: var(--brown);
+            color: var(--white);
+        }
+
+            .contact-strip h2, .contact-strip p {
+                color: var(--white);
+            }
+
+            .contact-strip .terra-btn {
+                background: var(--white);
+                color: var(--brown);
+                transition: background .2s;
+            }
+
+                .contact-strip .terra-btn:hover {
+                    background: var(--cream);
+                }
+
+                .contact-strip .terra-btn:focus-visible {
+                    outline: 2px solid var(--white);
+                    outline-offset: 5px;
+                }
     </style>
 </head>
 
